@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "recipe-manager", "recipe-manager\recipe-manager.csproj", "{2B64A38E-C969-4AAF-9B9E-1CA691606C42}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "recipeManager.Api", "recipeManager.Api\recipeManager.Api.csproj", "{2B64A38E-C969-4AAF-9B9E-1CA691606C42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
