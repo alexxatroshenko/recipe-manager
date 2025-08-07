@@ -19,6 +19,8 @@ var app = builder.Build();
 
 app.UseRouting();
 app.UseCors("AngularPolicy");
+app.UseStaticFiles();
+app.MapFallbackToFile("index.html");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
