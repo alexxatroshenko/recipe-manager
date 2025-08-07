@@ -11,6 +11,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="9.0.8" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
         <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="8.0.19" />
     </ItemGroup>
@@ -18,6 +19,12 @@
     <ItemGroup>
       <Folder Include="ClientApp\" />
       <Folder Include="wwwroot\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\recipeManager.Application\recipeManager.Application.csproj" />
+      <ProjectReference Include="..\recipeManager.Domain\recipeManager.Domain.csproj" />
+      <ProjectReference Include="..\recipeManager.Infrastructure\recipeManager.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
