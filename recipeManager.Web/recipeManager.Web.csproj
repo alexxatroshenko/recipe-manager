@@ -7,7 +7,7 @@
         <RootNamespace>recipe_manager</RootNamespace>
         <SpaRoot>../recipeManager.Web/ClientApp/</SpaRoot> 
         <SpaProxyServerUrl>http://localhost:4200</SpaProxyServerUrl>
-        <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
+        <SpaProxyLaunchCommand>ng serve</SpaProxyLaunchCommand>
     </PropertyGroup>
 
     <ItemGroup>
