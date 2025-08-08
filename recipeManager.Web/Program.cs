@@ -1,4 +1,5 @@
 using recipeManager.Infrastructure;
+using recipeManager.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,7 @@ app.MapFallbackToFile("index.html");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    await app.InitialiseDatabaseAsync();
     app.MapOpenApi();
 }
 
