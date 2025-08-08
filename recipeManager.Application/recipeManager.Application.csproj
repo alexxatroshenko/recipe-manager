@@ -16,4 +16,11 @@
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.8" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Common\Behaviours\" />
+      <Folder Include="Common\Exceptions\" />
+      <Folder Include="Common\Mappings\" />
+      <Folder Include="Common\Models\" />
+    </ItemGroup>
+
 </Project>
