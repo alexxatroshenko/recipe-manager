@@ -18,6 +18,7 @@
 
     <ItemGroup>
       <Folder Include="ClientApp\" />
+      <Folder Include="ClientApp\src\app\common\services\" />
       <Folder Include="wwwroot\" />
     </ItemGroup>
 
