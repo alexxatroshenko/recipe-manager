@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ThemeService {
-  private darkMode = false;
+  private isDarkTheme = false;
   constructor() {
     this.initTheme();
   }
@@ -12,21 +12,21 @@ export class ThemeService {
   private initTheme(): void {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
-      this.darkMode = savedTheme === 'dark';
+      this.isDarkTheme = savedTheme === 'dark';
     } else {
-      this.darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      this.isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
     this.applyTheme();
   }
 
   toggleTheme(): void {
-    this.darkMode = !this.darkMode;
-    localStorage.setItem('theme', this.darkMode ? 'dark' : 'light');
+    this.isDarkTheme = !this.isDarkTheme;
+    localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');
     this.applyTheme();
   }
 
   private applyTheme(): void {
-    if (this.darkMode) {
+    if (this.isDarkTheme) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
@@ -34,7 +34,7 @@ export class ThemeService {
   }
 
   isDarkMode(): boolean {
-    return this.darkMode;
+    return this.isDarkTheme;
   }
 
 }
