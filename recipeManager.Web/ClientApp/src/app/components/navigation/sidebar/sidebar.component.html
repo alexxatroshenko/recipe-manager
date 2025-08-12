@@ -1,0 +1,13 @@
+<!-- Overlay backdrop -->
+<div class="fixed inset-0 z-41 bg-gray-900/50 transition-opacity duration-300" [class.opacity-0]="!isSidebarOpen"
+    [class.pointer-events-none]="!isSidebarOpen" (click)="closeSidebar()"></div>
+
+<!-- Sidebar panel -->
+<div class="fixed inset-y-0 left-0 z-50 w-full sm:w-80 bg-background -translate-x-full"
+    [class.translate-x-0]="isSidebarOpen">
+    <div class="flex justify-end"><button (click)="closeSidebar()"
+            class=" material-icons hover:text-primary focus:outline-none p-2">
+            clear
+        </button></div>
+
+</div>
