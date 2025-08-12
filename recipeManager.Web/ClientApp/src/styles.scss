@@ -4,13 +4,22 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #60a5fa;
+  --color-primary: #d8006c;
+  --color-secondary: #ffd9e1;
   --color-background: #ffffff;
   --color-text: #333333;
 }
 
-.dark{
-  --color-primary: #162637;
-  --color-background: #000000;
+.dark {
+  --color-primary: #d8006c;
+  --color-secondary: #5c1539;
+  --color-background: #1a1a1a;
   --color-text: #f3f4f6;
 }
+
+body * {
+  @apply transition duration-200;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
