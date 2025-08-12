@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {TestService} from './test.service';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   standalone: true,
   selector: 'app-test',
-  imports: [],
+  imports: [MatSlideToggleModule],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss'
 })
