@@ -4,6 +4,6 @@ namespace recipeManager.Domain.Entities;
 
 public class Test:BaseAuditableEntity
 {
-    public string Text { get; set; } = null!;
-    public int Number { get; set; }
+    public string Text { get; init; } = null!;
+    public int Number { get; init; }
 }
