@@ -1,0 +1,2 @@
+dotnet ef migrations add moviedeletedduration --startup-project ../CinemaSolution.Server
+dotnet ef database update --startup-project ../CinemaSolution.Server
