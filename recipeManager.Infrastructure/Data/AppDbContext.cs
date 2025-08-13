@@ -7,7 +7,7 @@ namespace recipeManager.Infrastructure.Data;
 
 public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options), IAppDbContext
 {
-    public DbSet<Test> Test => Set<Test>();
+    public DbSet<Test> Tests => Set<Test>();
     
     protected override void OnModelCreating(ModelBuilder builder)
     {
