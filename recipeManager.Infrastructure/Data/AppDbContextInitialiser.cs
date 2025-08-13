@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using recipeManager.Domain.Entities;
 
@@ -21,15 +22,15 @@ public class AppDbContextInitialiser(AppDbContext context)
     public async Task InitialiseAsync()
     {
         // See https://jasontaylor.dev/ef-core-database-initialisation-strategies
-        //await _context.Database.EnsureDeletedAsync();
+        await context.Database.EnsureDeletedAsync();
         await context.Database.EnsureCreatedAsync();
     }
 
     public async Task SeedAsync()
     {
-        if (!context.Test.Any())
+        if (!context.Tests.Any())
         {
-            context.Test.Add(new Test
+            context.Tests.Add(new Test
             {
                 Text = "Test text",
                 Number = 999
