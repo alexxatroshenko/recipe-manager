@@ -1,3 +1,7 @@
+using System.Reflection;
+using recipe_manager;
+using recipe_manager.Infrastructure;
+using recipeManager.Application;
 using recipeManager.Infrastructure;
 using recipeManager.Infrastructure.Data;
 
@@ -6,18 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.AddApplicationServices();
 builder.AddInfrastructureServices();
-var corsOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>();
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AngularPolicy", policy =>
-    {
-        if (corsOrigins != null)
-            policy.WithOrigins(corsOrigins) // URL Angular в dev-режиме
-                .AllowAnyHeader()
-                .AllowAnyMethod();
-    });
-});
+builder.AddWebServices();
+
 var app = builder.Build();
 
 app.UseRouting();
@@ -51,6 +47,7 @@ app.MapGet("/api/weatherforecast", () =>
     })
     .WithName("GetWeatherForecast");
 
+app.MapEndpoints();
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
