@@ -1,5 +1,6 @@
 using FluentValidation;
 using MediatR;
+using ValidationException = recipeManager.Application.Common.Exceptions.ValidationException;
 
 namespace recipeManager.Application.Common.Behaviours;
 
