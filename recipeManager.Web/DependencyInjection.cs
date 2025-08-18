@@ -1,3 +1,4 @@
+using Microsoft.OpenApi.Models;
 using recipe_manager.Infrastructure;
 
 namespace recipe_manager;
@@ -18,6 +19,12 @@ public static class DependencyInjection
                         .AllowAnyHeader()
                         .AllowAnyMethod();
             });
+        });
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen(c => 
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            c.DocInclusionPredicate((docName, apiDesc) => true);
         });
     }
 }

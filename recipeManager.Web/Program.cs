@@ -47,6 +47,11 @@ app.MapGet("/api/weatherforecast", () =>
 
 app.UseExceptionHandler(options => { });
 app.MapEndpoints();
+app.UseSwagger();
+app.UseSwaggerUI(c => 
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+});
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
