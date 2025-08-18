@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {TestService} from './test.service';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
@@ -11,8 +11,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 })
 export class TestComponent implements OnInit{
 
-  constructor(private testService: TestService) {
-  }
+    private testService = inject(TestService);
     ngOnInit(): void {
         console.log("+")
         this.testService.testGet().subscribe();

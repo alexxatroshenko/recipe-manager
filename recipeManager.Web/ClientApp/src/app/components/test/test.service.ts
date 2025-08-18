@@ -1,14 +1,13 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestService {
-  private apiUrl = '/api/weatherforecast'
-  constructor(private http: HttpClient) { }
-
+  private apiUrl = '/api/tests';
+  private http = inject(HttpClient);
   testGet(){
-    return this.http.get(this.apiUrl);
+    return this.http.get(this.apiUrl + "?count=5");
   }
 }
