@@ -9,7 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
 builder.AddApplicationServices();
 builder.AddInfrastructureServices();
 builder.AddWebServices();
@@ -25,7 +24,6 @@ app.MapFallbackToFile("index.html");
 if (app.Environment.IsDevelopment())
 {
     await app.InitialiseDatabaseAsync();
-    app.MapOpenApi();
 }
 
 var summaries = new[]
@@ -47,6 +45,7 @@ app.MapGet("/api/weatherforecast", () =>
     })
     .WithName("GetWeatherForecast");
 
+app.UseExceptionHandler(options => { });
 app.MapEndpoints();
 app.Run();
 
