@@ -5,9 +5,28 @@
 <!-- Sidebar panel -->
 <div class="fixed inset-y-0 left-0 z-50 w-full sm:w-80 bg-background -translate-x-full"
     [class.translate-x-0]="isSidebarOpen">
-    <div class="flex justify-end"><button (click)="closeSidebar()"
-            class=" material-icons hover:text-primary focus:outline-none p-2">
+    <div class="flex justify-end">
+        <button (click)="closeSidebar()"
+            class="material-icons hover:text-primary focus:outline-none p-2">
             clear
-        </button></div>
+        </button>
+    </div>
 
+    <div class="p-6">
+        <h2 class="text-xl font-bold mb-6 text-primary">Меню</h2>
+        <nav class="space-y-2">
+            <a routerLink="/"
+               (click)="closeSidebar()"
+               class="flex items-center p-3 rounded-lg hover:bg-primary-bg transition-colors">
+                <mat-icon class="mr-3">restaurant</mat-icon>
+                <span>Рецепты</span>
+            </a>
+            <a routerLink="/create-recipe"
+               (click)="closeSidebar()"
+               class="flex items-center p-3 rounded-lg hover:bg-primary-bg transition-colors">
+                <mat-icon class="mr-3">add_circle</mat-icon>
+                <span>Создать рецепт</span>
+            </a>
+        </nav>
+    </div>
 </div>
