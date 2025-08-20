@@ -5,7 +5,9 @@
 
 @theme {
   --color-primary: #d8006c;
+  --color-primary-bg: rgba(227, 53, 140, 0.66);
   --color-secondary: #ffd9e1;
+  --color-card-bg: #ffecf0;
   --color-background: #ffffff;
   --color-text: #333333;
 }
@@ -13,12 +15,20 @@
 .dark {
   --color-primary: #d8006c;
   --color-secondary: #5c1539;
+  --color-card-bg: #400f28;
   --color-background: #1a1a1a;
   --color-text: #f3f4f6;
 }
 
-body * {
+body div {
   @apply transition duration-200;
+}
+
+button span{
+  @apply text-text
+}
+mat-card-content{
+  @apply bg-card-bg
 }
 
 html, body { height: 100%; }
