@@ -41,8 +41,12 @@
 
       <div class="flex items-center justify-end gap-1">
         <button (click)="toggleTheme()" type="button" class="p-2 rounded-md" aria-label="Переключить тему">
-          <span *ngIf="!isDark" class="material-icons align-middle hover:text-primary">dark_mode</span>
-          <span *ngIf="isDark" class="material-icons align-middle hover:text-primary">light_mode</span>
+          @if(!isDark){
+            <span class="material-icons align-middle hover:text-primary">dark_mode</span>
+          }
+          @else{
+            <span class="material-icons align-middle hover:text-primary">light_mode</span>
+          }
         </button>
         <button (click)="toggleUserInfo()" type="button" class="p-2 rounded-full" aria-label="Профиль">
           <span class="material-icons align-middle hover:text-primary">account_circle</span>
