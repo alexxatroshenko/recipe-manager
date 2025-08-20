@@ -1,0 +1,196 @@
+<div class="container mx-auto px-4 py-8 max-w-4xl">
+      <mat-card-title class="text-2xl font-bold text-primary">Создание нового рецепта</mat-card-title>
+      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <!-- Recipe Image Upload -->
+        <div class="mb-6 mt-3">
+          <div class="flex flex-col items-center">
+            <div
+              class="border-2 border-dashed border-gray-300 rounded-xl w-full h-64 flex items-center justify-center cursor-pointer bg-card-bg/50 hover:bg-card-bg transition-colors"
+              (click)="fileInput.click()">
+              <input
+                #fileInput
+                type="file"
+                accept="image/*"
+                class="hidden"
+                (change)="onImageSelected($event)">
+
+              <div class="text-center">
+
+
+                @if (imagePreview) {
+                  <div class="mt-4">
+                    <img [src]="imagePreview" alt="Предварительный просмотр" class="max-h-40 rounded-lg">
+                  </div>
+                  <button
+                    type="button"
+                    mat-icon-button
+                    matTooltip="Закрыть фото"
+                    (click)="closeImagePreview()"
+                    class="text-sm">
+                    <mat-icon>clear</mat-icon>
+                  </button>
+                }
+                @else{
+                  <span class="material-icons text-4xl text-gray-400 m-2">cloud_upload</span>
+                  <p class="text-gray-500 mb-1">Нажмите для загрузки фото готового блюда</p>
+                  <p class="text-sm text-gray-400">Максимальный размер: 5 МБ</p>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Recipe Title -->
+        <div>
+          <mat-form-field class="w-full">
+            <mat-label>Название блюда</mat-label>
+            <input
+              matInput
+              formControlName="title"
+              placeholder="Введите название блюда">
+            <mat-error>{{ getErrorMessage('title') }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Short Description -->
+        <div>
+          <mat-form-field class="w-full">
+            <mat-label>Краткое описание (оно отображается на карточке рецепта)</mat-label>
+            <textarea
+              matInput
+              formControlName="shortDescription"
+              placeholder="Введите краткое описание блюда"
+              rows="3">
+            </textarea>
+            <mat-hint align="end">{{ recipeForm.get('shortDescription')?.value?.length || 0 }}/100</mat-hint>
+            <mat-error>{{ getErrorMessage('shortDescription') }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Ingredients -->
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label class="text-lg font-medium">Ингредиенты</label>
+          </div>
+
+          <div formArrayName="ingredients">
+            @for (ingredient of ingredients.controls; track $index) {
+              <div [formGroupName]="$index" class="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-lg">
+                <mat-form-field>
+                  <mat-label>Название ингредиента</mat-label>
+                  <input
+                    matInput
+                    formControlName="name"
+                    placeholder="Например: сахар">
+                </mat-form-field>
+
+                <div class="flex items-center gap-2">
+                  <mat-form-field class="flex-grow">
+                    <mat-label>Количество</mat-label>
+                    <input
+                      matInput
+                      formControlName="quantity"
+                      placeholder="Например: 200 г">
+                  </mat-form-field>
+
+                  @if (ingredients.length > 1) {
+                    <button
+                      type="button"
+                      mat-icon-button
+                      color="warn"
+                      (click)="removeIngredient($index)"
+                      class="self-end mb-2">
+                      <mat-icon>remove_circle</mat-icon>
+                    </button>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+          <button
+            type="button"
+            mat-raised-button
+            color="primary"
+            (click)="addIngredient()"
+            class="text-sm">
+            <mat-icon>add</mat-icon>
+            Добавить ингредиент
+          </button>
+        </div>
+
+        <!-- Tags -->
+        <div>
+          <label class="block text-lg font-medium mb-2">Теги</label>
+          <div class="mb-3">
+            <div class="flex flex-row items-start gap-2">
+                <mat-form-field class="flex-grow">
+                  <mat-label>Добавить тег</mat-label>
+                  <input
+                    matInput
+                    [(ngModel)]="currentTag"
+                    [ngModelOptions]="{standalone: true}"
+                    placeholder="Введите тег и нажмите Enter"
+                    (keydown.enter)="addTag(); $event.preventDefault()"
+                    [disabled]="tags.length >= 10">
+                </mat-form-field>
+              <div class="mt-2">
+                <button
+                  type="button"
+                  mat-raised-button
+                  color="primary"
+                  (click)="addTag()"
+                  [disabled]="tags.length >= 10"
+                  class="self-end">
+                  <mat-icon>add</mat-icon>
+                  Добавить
+                </button>
+              </div>
+            </div>
+            <p class="text-sm text-gray-500 mt-1">Максимум 10 тегов</p>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            @for (tag of tags; track $index) {
+              <mat-chip-row
+                (removed)="removeTag(tag)"
+                removable="true">
+                {{ tag }}
+                <mat-icon matChipRemove>cancel</mat-icon>
+              </mat-chip-row>
+            }
+          </div>
+        </div>
+
+        <!-- Full Description -->
+        <div>
+          <mat-form-field class="w-full">
+            <mat-label>Полное описание рецепта</mat-label>
+            <textarea
+              matInput
+              formControlName="fullDescription"
+              placeholder="Опишите пошагово процесс приготовления"
+              rows="8">
+            </textarea>
+            <mat-error>{{ getErrorMessage('fullDescription') }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="flex justify-end gap-4 pt-4">
+          <button
+            type="button"
+            mat-stroked-button
+            (click)="onCancel()">
+            Отмена
+          </button>
+          <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            (click)="onSubmit()">
+            Создать рецепт
+          </button>
+        </div>
+      </form>
+</div>
