@@ -24,11 +24,34 @@ body div {
   @apply transition duration-200;
 }
 
-button span{
-  @apply text-text
-}
+
 mat-card-content{
   @apply bg-card-bg
+}
+mat-label{
+  @apply text-text
+}
+
+.mdc-floating-label--required{
+  color: var(--color-red-500) !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: var(--color-card-bg) !important;
+}
+
+.mat-mdc-paginator, .mat-mdc-select{
+  background-color: transparent !important;
+  color: var(--color-text) !important;
+}
+
+svg.mat-mdc-paginator-icon{
+  fill: var(--color-text) !important;
+}
+
+.mat-mdc-raised-button:not(:disabled){
+  background-color: var(--color-primary) !important;
+  color: var(--color-text) !important;
 }
 
 html, body { height: 100%; }
