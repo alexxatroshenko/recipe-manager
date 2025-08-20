@@ -7,12 +7,12 @@ namespace recipe_manager.Endpoints;
 
 public class Tests: EndpointGroupBase
 {
-    public override void Map(RouteGroupBuilder groupBuilder)
+    public override void Map(WebApplication app)
     {
-        groupBuilder.MapGet(GetTests);
+        app.MapGet(GetTests, "").WithName(nameof(Tests)).WithDescription("Тестовый мето").WithGroupName("lol").WithTags("kek");
     }
 
-    public async Task<Ok<List<TestDto>>> GetTests(ISender sender, [AsParameters] GetTestsQuery query)
+    private async Task<Ok<List<TestDto>>> GetTests(ISender sender, [AsParameters] GetTestsQuery query)
     {
         var result = await sender.Send(query);
 
