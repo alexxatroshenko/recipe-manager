@@ -19,16 +19,17 @@
       </div>
 
       <mat-card-content>
-        <h2 class="text-lg mb-1 mt-1 truncate">{{ recipe.title }}</h2>
+        <a href="/create-recipe">
+          <h2 class="text-lg mb-1 mt-1 truncate">{{ recipe.title }}</h2>
 
-        <div class="overflow-hidden h-20">
+          <div class="overflow-hidden h-20">
             <span
               class=" text-xs"
             >
             {{ recipe.description }}
           </span>
-        </div>
-
+          </div>
+        </a>
         <div class="flex flex-wrap gap-2">
           @for (tag of recipe.tags ; track $index) {
             <div

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { ThemeService } from '../../common/services/theme.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -10,7 +10,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
   selector: 'app-nav',
   imports: [CommonModule, RouterLink, SidebarComponent, UserInfoComponent],
   templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.scss'
+  styleUrl: './navigation.component.scss',
 })
 export class NavigationComponent {
   isSideBarOpened: boolean = false;

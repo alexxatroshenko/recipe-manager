@@ -48,7 +48,6 @@ interface RecipeDetail {
   ],
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.scss',
-  encapsulation: ViewEncapsulation.None
 })
 export class RecipesComponent implements OnInit {
   recipes: Recipe[] = [];
