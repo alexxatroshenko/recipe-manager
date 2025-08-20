@@ -1,0 +1,12 @@
+.recipe-card {
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+// Custom styles for paginator
+mat-paginator {
+  background: transparent;
+  box-shadow: none;
+}
