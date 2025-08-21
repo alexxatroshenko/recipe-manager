@@ -9,21 +9,18 @@ public static class EndpointRouteBuilderExtensions
         return builder.MapGet(handler.Method.Name, handler);
     }
 
-    public static RouteHandlerBuilder MapPost(this IEndpointRouteBuilder builder, Delegate handler, [StringSyntax("Route")] string pattern = "")
+    public static RouteHandlerBuilder MapPost(this IEndpointRouteBuilder builder, Delegate handler)
     {
-        return builder.MapPost(pattern, handler)
-            .WithName(handler.Method.Name);
+        return builder.MapPost(handler.Method.Name, handler);
     }
 
-    public static RouteHandlerBuilder MapPut(this IEndpointRouteBuilder builder, Delegate handler, [StringSyntax("Route")] string pattern)
+    public static RouteHandlerBuilder MapPut(this IEndpointRouteBuilder builder, Delegate handler)
     {
-        return builder.MapPut(pattern, handler)
-            .WithName(handler.Method.Name);
+        return builder.MapPut(handler.Method.Name, handler);
     }
 
-    public static RouteHandlerBuilder MapDelete(this IEndpointRouteBuilder builder, Delegate handler, [StringSyntax("Route")] string pattern)
+    public static RouteHandlerBuilder MapDelete(this IEndpointRouteBuilder builder, Delegate handler)
     {
-        return builder.MapDelete(pattern, handler)
-            .WithName(handler.Method.Name);
+        return builder.MapDelete(handler.Method.Name, handler);
     }
 }
