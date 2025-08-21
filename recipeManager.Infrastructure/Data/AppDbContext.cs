@@ -13,6 +13,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<RecipeLike> RecipeLikes => Set<RecipeLike>();
     public DbSet<RecipeComment> RecipeComments => Set<RecipeComment>();
     public DbSet<SavedRecipe> SavedRecipes => Set<SavedRecipe>();
+    public DbSet<RecipeIngredient> RecipeIngredients => Set<RecipeIngredient>();
     
     protected override void OnModelCreating(ModelBuilder builder)
     {
