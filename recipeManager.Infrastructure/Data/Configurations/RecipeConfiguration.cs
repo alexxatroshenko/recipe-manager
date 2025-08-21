@@ -15,11 +15,11 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
         builder.Property(r => r.Description)
             .HasMaxLength(1000);
 
-        builder.Property(r => r.Ingredients)
-            .IsRequired();
-
         builder.Property(r => r.Instructions)
             .IsRequired();
+            
+        builder.Property(r => r.Tags)
+            .HasMaxLength(500);
 
         builder.HasOne(r => r.Author)
             .WithMany(u => u.Recipes)

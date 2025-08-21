@@ -8,7 +8,6 @@ public class Recipe : BaseAuditableEntity
     public string? Description { get; init; }
     public string Instructions { get; init; } = null!;
     public int CookingTime { get; init; } // in minutes
-    public int Servings { get; init; }
     public string Tags { get; init; } = null!;
     
     // Foreign key
