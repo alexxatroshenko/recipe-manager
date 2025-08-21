@@ -6,7 +6,7 @@ public class Recipe : BaseAuditableEntity
 {
     public string Title { get; init; } = null!;
     public string? Description { get; init; }
-    public string Instructions { get; init; } = null!;
+    public string? Instructions { get; init; } = null!;
     public int CookingTime { get; init; } // in minutes
     public string Tags { get; init; } = null!;
     
