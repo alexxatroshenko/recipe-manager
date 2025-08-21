@@ -400,6 +400,12 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+.idea/.idea.recipe-manager/.idea/dataSources.xml
+.idea/.idea.recipe-manager/.idea/dataSources/
+.idea/.idea.recipe-manager/.idea/httpRequests/
+.idea/.idea.recipe-manager/.idea/projectSettingsUpdater.xml
+.idea/.idea.recipe-manager/.idea/vcs.xml
+.idea/.idea.recipe-manager/.idea/workspace.xml
 
 ##
 ## Visual studio for Mac
