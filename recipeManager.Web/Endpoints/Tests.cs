@@ -9,7 +9,9 @@ public class Tests: EndpointGroupBase
 {
     public override void Map(WebApplication app)
     {
-        app.MapGet(GetTests, "").WithName(nameof(Tests)).WithDescription("Тестовый мето").WithGroupName("lol").WithTags("kek");
+        var api = app.MapGroup($"/api/{nameof(Tests)}/");
+        
+        api.MapGet(GetTests).WithName(nameof(Tests)).WithDescription("Тестовый мето").WithGroupName("lol").WithTags("kek");
     }
 
     private async Task<Ok<List<TestDto>>> GetTests(ISender sender, [AsParameters] GetTestsQuery query)

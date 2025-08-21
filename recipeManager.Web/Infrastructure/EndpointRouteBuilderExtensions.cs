@@ -4,10 +4,9 @@ namespace recipe_manager.Infrastructure;
 
 public static class EndpointRouteBuilderExtensions
 {
-    public static RouteHandlerBuilder MapGet(this IEndpointRouteBuilder builder, Delegate handler, [StringSyntax("Route")] string pattern = "")
+    public static RouteHandlerBuilder MapGet(this IEndpointRouteBuilder builder, Delegate handler)
     {
-        return builder.MapGet(pattern, handler)
-            .WithName(handler.Method.Name);
+        return builder.MapGet(handler.Method.Name, handler);
     }
 
     public static RouteHandlerBuilder MapPost(this IEndpointRouteBuilder builder, Delegate handler, [StringSyntax("Route")] string pattern = "")

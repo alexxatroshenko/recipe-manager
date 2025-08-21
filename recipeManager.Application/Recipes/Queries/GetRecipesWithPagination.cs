@@ -10,8 +10,8 @@ namespace recipeManager.Application.Recipes.Queries;
 
 public record GetRecipesWithPaginationQuery : IRequest<PaginatedList<RecipeSummaryDto>>
 {
-    public int PageNumber { get; } = 1;
-    public int PageSize { get; } = 12;
+    public int PageNumber { get; set; }
+    public int PageSize { get; set; }
 }
 
 public class GetRecipesWithPagination: IRequestHandler<GetRecipesWithPaginationQuery, PaginatedList<RecipeSummaryDto>>
