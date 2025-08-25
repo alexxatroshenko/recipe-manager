@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using recipe_manager.Infrastructure;
 using recipeManager.Application.Common.Models;
 using recipeManager.Application.Recipes.Queries;
-using recipeManager.Application.Tests.Queries;
-
 namespace recipe_manager.Endpoints;
 
 public class Recipes: EndpointGroupBase

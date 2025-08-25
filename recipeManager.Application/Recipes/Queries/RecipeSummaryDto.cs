@@ -1,5 +1,4 @@
 using AutoMapper;
-using recipeManager.Application.Tests.Queries;
 using recipeManager.Domain.Entities;
 
 namespace recipeManager.Application.Recipes.Queries;
