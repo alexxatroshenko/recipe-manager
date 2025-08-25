@@ -2,10 +2,7 @@
 
 <div class="container mx-auto px-4 py-8">
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-    <mat-card
-      *ngFor="let recipe of paginatedRecipes"
-      class="overflow-hidden recipe-card duration-200"
-    >
+    <mat-card *ngFor="let recipe of recipesService.recipes().items" class="overflow-hidden recipe-card duration-200">
       <!-- Recipe Image with Icon -->
       <div class="relative h-60 bg-gray-200 flex items-center justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
@@ -19,45 +16,48 @@
       </div>
 
       <mat-card-content>
-        <a href="/create-recipe">
-          <h2 class="text-lg mb-1 mt-1 truncate">{{ recipe.title }}</h2>
+        <div class="flex flex-col h-45 justify-between">
+          <a href="/create-recipe">
+            <div class="flex flex-row justify-between items-center">
+              <h2 class="text-lg mb-1 mt-1 truncate">{{ recipe.title }}</h2>
+              <span class="text-xs text-text/50">{{recipe.cookingTime}} мин</span>
+            </div>
+            <div class="flex flex-row justify-between text-xs text-text/50">
+              <span>author</span>
+              <span>{{recipe.created}}</span>
+            </div>
 
-          <div class="overflow-hidden h-20">
-            <span
-              class=" text-xs"
-            >
-            {{ recipe.description }}
-          </span>
-          </div>
-        </a>
-        <div class="flex flex-wrap gap-2">
-          @for (tag of recipe.tags ; track $index) {
-            <div
-              class="py-0.5 px-1.5 text-xs rounded-full bg-primary-bg"
-            >
-            {{ tag }}
-          </div>
-          }
-        </div>
+            <div class="overflow-hidden h-20 ">
+              <span class=" text-xs">
+                {{ recipe.description}}
+              </span>
+            </div>
+          </a>
+          <div>
+            <div class="flex flex-wrap gap-2 h-5 overflow-hidden">
+              @for (tag of recipe.tags ; track $index) {
+              <div class="py-0.5 px-1.5 text-xs rounded-full bg-primary-bg">
+                {{ tag }}
+              </div>
+              }
+            </div>
 
-        <div class="flex justify-between items-center">
-          <div class="flex space-x-4">
-            <span class="text-xs text-text/70">понравилось: {{ recipe.likes }}</span>
-            <span class="text-xs text-text/70">комментариев: {{recipe.comments}}</span>
-          </div>
+            <div class="flex justify-between items-center">
+              <div class="flex space-x-4">
+                <span class="text-xs text-text/70">понравилось: {{ recipe?.likesCount ?? 0 }}</span>
+                <span class="text-xs text-text/70">комментариев: {{recipe?.commentsCount ?? 0}}</span>
+              </div>
 
-          <button
-            mat-icon-button
-            (click)="toggleSave(recipe)"
-            aria-label="Сохранить в избранное"
-          >
-            @if(recipe.isSaved){
-              <span class="material-icons hover:text-primary">bookmark</span>
-            }
-            @else{
-              <span class="material-icons hover:text-primary">bookmark_border</span>
-            }
-          </button>
+              <button mat-icon-button (click)="toggleSave(recipe)" aria-label="Сохранить в избранное">
+                @if(recipe.isSaved){
+                <span class="material-icons hover:text-primary">bookmark</span>
+                }
+                @else{
+                <span class="material-icons hover:text-primary">bookmark_border</span>
+                }
+              </button>
+            </div>
+          </div>
         </div>
       </mat-card-content>
     </mat-card>
@@ -65,12 +65,8 @@
 
   <!-- Pagination -->
   <div class="flex justify-center mt-8">
-    <mat-paginator
-      [length]="totalRecipes"
-      [pageSize]="pageSize"
-      [pageSizeOptions]="[12, 24, 36]"
-      (page)="onPageChange($event)"
-      aria-label="Выбор страницы рецептов">
+    <mat-paginator [length]="recipesService.recipes().totalCount" [pageSize]="pageSize" [pageSizeOptions]="[12, 24, 36]"
+      (page)="onPageChange($event)" aria-label="Выбор страницы рецептов">
     </mat-paginator>
   </div>
 </div>
