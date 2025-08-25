@@ -28,15 +28,6 @@ public class AppDbContextInitialiser(AppDbContext context)
 
     public async Task SeedAsync()
     {
-        if (!context.Tests.Any())
-        {
-            context.Tests.Add(new Test
-            {
-                Text = "Test text",
-                Number = 999
-            });
-        }
-
         if (!context.Recipes.Any())
         {
             context.Recipes.AddRange(
