@@ -1,6 +1,6 @@
-using recipeManager.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using recipeManager.Infrastructure.Identity.Entities;
 
 namespace recipeManager.Infrastructure.Data.Configurations;
 
@@ -8,7 +8,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
-        builder.Property(u => u.Username)
+        builder.Property(u => u.UserName)
             .HasMaxLength(100)
             .IsRequired();
 
@@ -20,7 +20,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasMaxLength(255)
             .IsRequired();
 
-        builder.HasIndex(u => u.Username)
+        builder.HasIndex(u => u.UserName)
             .IsUnique();
 
         builder.HasIndex(u => u.Email)
