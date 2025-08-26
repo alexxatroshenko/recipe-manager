@@ -15,10 +15,5 @@ public class SavedRecipeConfiguration : IEntityTypeConfiguration<SavedRecipe>
             .WithMany(r => r.SavedRecipes)
             .HasForeignKey(sr => sr.RecipeId)
             .OnDelete(DeleteBehavior.Cascade);
-
-        builder.HasOne(sr => sr.User)
-            .WithMany(u => u.SavedRecipes)
-            .HasForeignKey(sr => sr.UserId)
-            .OnDelete(DeleteBehavior.Restrict);
     }
 }

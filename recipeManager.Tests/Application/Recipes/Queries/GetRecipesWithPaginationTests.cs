@@ -87,7 +87,7 @@ file sealed class TestDbContext : DbContext, IAppDbContext
 {
     public TestDbContext(DbContextOptions<TestDbContext> options) : base(options) { }
 
-    public DbSet<User> Users => Set<User>();
+    //public DbSet<User> Users => Set<User>();
     public DbSet<Recipe> Recipes => Set<Recipe>();
     public DbSet<RecipeLike> RecipeLikes => Set<RecipeLike>();
     public DbSet<RecipeComment> RecipeComments => Set<RecipeComment>();

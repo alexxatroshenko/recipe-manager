@@ -5,7 +5,6 @@ namespace recipeManager.Application.Common.Interfaces;
 
 public interface IAppDbContext
 {
-    DbSet<User> Users { get; }
     DbSet<Recipe> Recipes { get; }
     DbSet<RecipeLike> RecipeLikes { get; }
     DbSet<RecipeComment> RecipeComments { get; }

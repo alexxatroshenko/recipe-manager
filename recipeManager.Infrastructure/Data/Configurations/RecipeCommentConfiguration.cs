@@ -16,10 +16,5 @@ public class RecipeCommentConfiguration : IEntityTypeConfiguration<RecipeComment
             .WithMany(r => r.RecipeComments)
             .HasForeignKey(rc => rc.RecipeId)
             .OnDelete(DeleteBehavior.Cascade);
-
-        builder.HasOne(rc => rc.User)
-            .WithMany(u => u.RecipeComments)
-            .HasForeignKey(rc => rc.UserId)
-            .OnDelete(DeleteBehavior.Restrict);
     }
 }

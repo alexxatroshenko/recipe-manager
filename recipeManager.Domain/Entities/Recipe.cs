@@ -10,11 +10,6 @@ public class Recipe : BaseAuditableEntity
     public int CookingTime { get; init; } // in minutes
     public string Tags { get; init; } = null!;
     
-    // Foreign key
-    public int? AuthorId { get; init; }
-    
-    // Navigation properties
-    public User Author { get; init; } = null!;
     public ICollection<RecipeLike> RecipeLikes { get; init; } = new List<RecipeLike>();
     public ICollection<RecipeComment> RecipeComments { get; init; } = new List<RecipeComment>();
     public ICollection<SavedRecipe> SavedRecipes { get; init; } = new List<SavedRecipe>();

@@ -17,10 +17,5 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
             
         builder.Property(r => r.Tags)
             .HasMaxLength(500);
-
-        builder.HasOne(r => r.Author)
-            .WithMany(u => u.Recipes)
-            .HasForeignKey(r => r.AuthorId)
-            .OnDelete(DeleteBehavior.Restrict);
     }
 }

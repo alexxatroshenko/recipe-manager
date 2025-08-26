@@ -10,5 +10,4 @@ public class SavedRecipe : BaseAuditableEntity
     
     // Navigation properties
     public Recipe Recipe { get; set; } = null!;
-    public User User { get; set; } = null!;
 }

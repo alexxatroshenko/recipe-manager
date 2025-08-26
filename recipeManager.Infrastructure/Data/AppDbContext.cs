@@ -7,7 +7,6 @@ namespace recipeManager.Infrastructure.Data;
 
 public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options), IAppDbContext
 {
-    public DbSet<User> Users => Set<User>();
     public DbSet<Recipe> Recipes => Set<Recipe>();
     public DbSet<RecipeLike> RecipeLikes => Set<RecipeLike>();
     public DbSet<RecipeComment> RecipeComments => Set<RecipeComment>();
