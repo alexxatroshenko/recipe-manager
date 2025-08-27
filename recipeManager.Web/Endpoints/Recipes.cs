@@ -7,11 +7,9 @@ namespace recipe_manager.Endpoints;
 
 public class Recipes: EndpointGroupBase
 {
-    public override void Map(WebApplication app)
+    public override void Map(RouteGroupBuilder groupBuilder)
     {
-        var api = app.MapGroup($"/api/{nameof(Recipes)}/");
-        
-        api.MapGet(GetRecipesWithPagination)
+        groupBuilder.MapGet(GetRecipesWithPagination)
             .WithName(nameof(Recipes))
             .WithDescription("Получение списка рецептов постранично");
     }
