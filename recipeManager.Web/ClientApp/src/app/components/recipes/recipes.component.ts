@@ -25,6 +25,7 @@ import {PaginatedList, Recipe} from '../../models/recipe.model';
   styleUrl: './recipes.component.scss',
 })
 export class RecipesComponent implements OnInit {
+  aboutVisible: boolean = true;
   recipes: PaginatedList<Recipe>[] = [];
   pageSize: number = 12;
   currentPage: number = 1;
@@ -57,6 +58,8 @@ export class RecipesComponent implements OnInit {
     recipe.isSaved = !recipe.isSaved;
     // Empty method as requested
   }
-
+  onAboutClose(){
+    this.aboutVisible = false;
+  }
 }
 
